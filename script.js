@@ -131,9 +131,8 @@ document.addEventListener("DOMContentLoaded", () => {
 			input.type = "text";
 			input.value = prompt;
 
-			// Set the width and height of the input field using inline styles
-			input.style.width = "600px"; // You can adjust the width
-			input.style.height = "30px"; // You can adjust the height
+			// Apply styling to the input element
+			input.classList.add("input-style"); // Add the "input-style" class to the input element
 
 			input.addEventListener("input", (e) => {
 				updatePrompt(index, e.target.value);
@@ -141,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 			const deleteButton = document.createElement("button");
 			deleteButton.textContent = "Delete";
+			deleteButton.classList.add("button");
 			deleteButton.addEventListener("click", () => {
 				deletePrompt(index);
 			});
@@ -149,7 +149,10 @@ document.addEventListener("DOMContentLoaded", () => {
 			promptDiv.appendChild(deleteButton);
 			promptsContainer.appendChild(promptDiv);
 		});
-	}; const renderResponses = () => {
+	};
+
+
+	const renderResponses = () => {
 		responsesContainer.innerHTML = "";
 		const converter = new showdown.Converter();
 

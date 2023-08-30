@@ -50,11 +50,17 @@
 			background-color: var(--primary-color);
 			color: #fff;
 			cursor: pointer;
-			transition: background-color 0.2s, color 0.2s;
+			transition: background-color 0.2s, color 0.2s, transform 0.2s;
+			text-transform: uppercase;
+			/* Uppercase text for buttons */
+			letter-spacing: 1px;
+			/* Improved letter spacing */
 		}
 
 		.button:hover {
 			background-color: var(--secondary-color);
+			transform: scale(1.05);
+			/* Slight scale effect on hover */
 		}
 
 		.button:disabled {
@@ -137,6 +143,29 @@
 			background-color: var(--neutral-dark);
 		}
 
+		.input-style {
+			width: 100%;
+			height: 30px;
+			padding: 8px;
+			border: 1px solid var(--neutral-dark);
+			border-radius: 5px;
+			font-size: 14px;
+			color: var(--text-color);
+			transition: border-color 0.2s, box-shadow 0.2s;
+			margin-bottom: 10px;
+
+			/* Additional styles */
+			background-color: var(--neutral-light);
+			box-shadow: 0px 2px 4px var(--shadow-color);
+		}
+
+		.input-style:focus {
+			outline: none;
+			border-color: var(--primary-color);
+			box-shadow: 0px 0px 6px var(--primary-color);
+		}
+
+
 		#generateBtn {
 			margin-top: 10px;
 		}
@@ -175,9 +204,9 @@
 		<h1>Chat Book</h1>
 
 		<input id="numChapters" value="5" />
-		<button id="updateChapters">Update Chapters</button>
-		<button id="updateSteps">Update Steps</button>
-		<button id="addPromptBtn">Add Prompt</button>
+		<button class="button" id="updateChapters">Update Chapters</button>
+		<button class="button" id="updateSteps">Update Steps</button>
+		<button class="button" id="addPromptBtn">Add Prompt</button>
 		<!-- Add this button along with other buttons -->
 		<button hidden id="generatePdfBtn">Generate PDF</button>
 		<div id="progressContainer">
@@ -185,8 +214,8 @@
 			<progress id="progressRange" value="0" max="100"></progress>
 		</div>
 
-		<button id="generateBtn">Generate</button>
-		<button id="printBtn">Print</button>
+		<button class="button" id="generateBtn">Generate</button>
+		<button class="button" id="printBtn">Print</button>
 
 		<div id="promptsContainer"></div>
 		<div class="responses" id="responsesContainer"></div>
