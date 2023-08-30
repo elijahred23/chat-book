@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chat Book</title><!-- Add this in the <head> section of your HTML -->
+	<!-- Add this in the <head> section of your HTML -->
+	<!-- Add these in the <head> section of your HTML -->
+	<!-- Add these in the <head> section of your HTML -->
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f2f2f2;
+		}
+
+		:root {
+			--primary-color: #007bff;
+			--secondary-color: #0056b3;
+			--neutral-light: #f0f0f0;
+			--neutral-dark: #ccc;
+			--text-color: #333;
+			--text-color-light: #555;
+			--shadow-color: rgba(0, 0, 0, 0.1);
+		}
+
+		.App {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			border: 1px solid var(--neutral-dark);
+			border-radius: 10px;
+			background-color: #fff;
+			box-shadow: 0px 2px 6px var(--shadow-color);
+		}
+
+		h1 {
+			font-size: 24px;
+			margin-bottom: 20px;
+			color: var(--text-color);
+		}
+
+		.button {
+			padding: 10px 20px;
+			font-size: 14px;
+			border: none;
+			border-radius: 5px;
+			background-color: var(--primary-color);
+			color: #fff;
+			cursor: pointer;
+			transition: background-color 0.2s, color 0.2s;
+		}
+
+		.button:hover {
+			background-color: var(--secondary-color);
+		}
+
+		.button:disabled {
+			background-color: var(--neutral-dark);
+			cursor: not-allowed;
+		}
+
+		.prompt,
+		.response {
+			margin-top: 20px;
+			padding: 15px;
+			border: 1px solid var(--neutral-dark);
+			border-radius: 5px;
+			background-color: #fff;
+			box-shadow: 0px 2px 4px var(--shadow-color);
+		}
+
+		.input-container {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+
+		.input-container input {
+			flex: 1;
+			padding: 8px;
+			border: 1px solid var(--neutral-dark);
+			border-radius: 5px;
+			font-size: 14px;
+			color: var(--text-color);
+		}
+
+		.input-container button {
+			margin-left: 10px;
+			padding: 8px 15px;
+			border: none;
+			border-radius: 5px;
+			background-color: var(--primary-color);
+			color: #fff;
+			cursor: pointer;
+			transition: background-color 0.2s, color 0.2s;
+		}
+
+		.input-container button:hover {
+			background-color: var(--secondary-color);
+		}
+
+		.response-role {
+			font-weight: bold;
+		}
+
+		#generateBtn[disabled] {
+			background-color: var(--neutral-dark);
+			cursor: not-allowed;
+		}
+
+		.pdf-entry {
+			margin-top: 10px;
+			font-size: 14px;
+			color: var(--text-color-light);
+		}
+
+		.input-style {
+			width: 100%;
+			height: 40px;
+			padding: 8px;
+			border: 1px solid var(--neutral-dark);
+			border-radius: 5px;
+			font-size: 14px;
+			color: var(--text-color);
+		}
+
+
+		.progress-range {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			background-color: var(--neutral-dark);
+		}
+
+		#generateBtn {
+			margin-top: 10px;
+		}
+
+		#progressContainer {
+			width: 100%;
+			height: 20px;
+			background-color: #f0f0f0;
+			border-radius: 10px;
+			margin-top: 10px;
+			overflow: hidden;
+		}
+
+		#progressBar {
+			height: 100%;
+			background-color: #4caf50;
+			width: 0;
+			transition: width 0.3s;
+		}
+
+		#progressRange {
+			display: none;
+			/* Hide the default progress range */
+		}
+	</style>
+
+
+	<script type="text/javascript" src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+
+
+
+</head>
+
+<body>
+	<div class="App">
+		<h1>Chat Book</h1>
+
+		<input id="numChapters" value="5" />
+		<button id="updateChapters">Update Chapters</button>
+		<button id="updateSteps">Update Steps</button>
+		<button id="addPromptBtn">Add Prompt</button>
+		<!-- Add this button along with other buttons -->
+		<button hidden id="generatePdfBtn">Generate PDF</button>
+		<div id="progressContainer">
+			<div id="progressBar"></div>
+			<progress id="progressRange" value="0" max="100"></progress>
+		</div>
+
+		<button id="generateBtn">Generate</button>
+		<button id="printBtn">Print</button>
+
+		<div id="promptsContainer"></div>
+		<div class="responses" id="responsesContainer"></div>
+	</div>
+	<script src="script.js"></script>
+</body>
+
+</html>
