@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		prompts.push("Write step by step process that has " + numChapters.value + " steps total about ");
 
 		for (let chapter = 1; chapter <= numChapters.value; chapter++) {
-			prompts.push("write in detail how to execute step " + chapter + " from step by step process with about 1000 words with code if necessary or more");
+			prompts.push("write in detail how to execute step " + chapter + " from step by step process with about 1000 words or more with code if necessary or more");
 		}
 		addPromptBtn.click();
 	}
