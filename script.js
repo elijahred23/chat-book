@@ -179,6 +179,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	addPromptBtn.addEventListener("click", addPrompt);
 
+
+	const printAfterGenerateCheckbox = document.getElementById("printAfterGenerate");
+
+	// Function to trigger the print button
+	const triggerPrint = () => {
+		if (printAfterGenerateCheckbox.checked) {
+			printBtn.click();
+		}
+	};
 	generateBtn.addEventListener("click", async () => {
 		try {
 			progressBar.style.width = "0%";
@@ -198,13 +207,14 @@ document.addEventListener("DOMContentLoaded", () => {
 				await new Promise(resolve => setTimeout(resolve, 100));
 			}
 
+			// After the generation is complete, trigger print if the checkbox is checked
+			triggerPrint();
 
 			promptsContainer.style.backgroundColor = "#D3D3D3";
 		} catch (error) {
 			console.error(error);
 		}
 	});
-
 
 	setGenerateBtnState();
 	renderPrompts();

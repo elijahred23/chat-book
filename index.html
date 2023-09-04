@@ -190,6 +190,22 @@
 			display: none;
 			/* Hide the default progress range */
 		}
+
+		/* CSS Styles for the checkbox and label */
+		.checkbox-container {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+		}
+
+		.checkbox-container input[type="checkbox"] {
+			margin-right: 5px;
+		}
+
+		.checkbox-container label {
+			font-size: 16px;
+			color: #333;
+		}
 	</style>
 
 
@@ -207,6 +223,11 @@
 		<button class="button" id="updateChapters">Update Chapters</button>
 		<button class="button" id="updateSteps">Update Steps</button>
 		<button class="button" id="addPromptBtn">Add Prompt</button>
+		<div class="checkbox-container">
+			<input type="checkbox" id="printAfterGenerate">
+			<label for="printAfterGenerate">Print after generation</label>
+		</div>
+
 		<!-- Add this button along with other buttons -->
 		<button hidden id="generatePdfBtn">Generate PDF</button>
 		<div id="progressContainer">
