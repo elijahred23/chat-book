@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		for (let chapter = 1; chapter <= numChapters.value; chapter++) {
 			prompts.push("write essay about chapter " + chapter + " from the table of contents with about 1000 words or more");
 		}
-		addPromptBtn.click();
+		renderPrompts();
 	};
 	const setPromptSteps = () => {
 		prompts = [];
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		for (let chapter = 1; chapter <= numChapters.value; chapter++) {
 			prompts.push("write in detail how to execute step " + chapter + " from step by step process with about 1000 words or more with code if necessary or more");
 		}
-		addPromptBtn.click();
+		renderPrompts();
 	}
 
 	updateChapters.addEventListener("click", setPromptChapters);
@@ -38,6 +38,37 @@ document.addEventListener("DOMContentLoaded", () => {
 		window.print();
 	})
 
+
+	const renderPrompts = () => {
+		promptsContainer.innerHTML = "";
+		prompts.forEach((prompt, index) => {
+			const promptDiv = document.createElement("div");
+			promptDiv.className = "prompt";
+			promptDiv.style.backgroundColor = loading && currentPromptIndex === index ? "yellow" : "white";
+
+			const input = document.createElement("input");
+			input.type = "text";
+			input.value = prompt;
+
+			// Apply styling to the input element
+			input.classList.add("input-style"); // Add the "input-style" class to the input element
+
+			input.addEventListener("input", (e) => {
+				updatePrompt(index, e.target.value);
+			});
+
+			const deleteButton = document.createElement("button");
+			deleteButton.textContent = "Delete";
+			deleteButton.classList.add("button");
+			deleteButton.addEventListener("click", () => {
+				deletePrompt(index);
+			});
+
+			promptDiv.appendChild(input);
+			promptDiv.appendChild(deleteButton);
+			promptsContainer.appendChild(promptDiv);
+		});
+	};
 
 	setPromptChapters();
 
@@ -118,37 +149,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const setLoading = (value) => {
 		loading = value;
 		setGenerateBtnState();
-	};
-
-	const renderPrompts = () => {
-		promptsContainer.innerHTML = "";
-		prompts.forEach((prompt, index) => {
-			const promptDiv = document.createElement("div");
-			promptDiv.className = "prompt";
-			promptDiv.style.backgroundColor = loading && currentPromptIndex === index ? "yellow" : "white";
-
-			const input = document.createElement("input");
-			input.type = "text";
-			input.value = prompt;
-
-			// Apply styling to the input element
-			input.classList.add("input-style"); // Add the "input-style" class to the input element
-
-			input.addEventListener("input", (e) => {
-				updatePrompt(index, e.target.value);
-			});
-
-			const deleteButton = document.createElement("button");
-			deleteButton.textContent = "Delete";
-			deleteButton.classList.add("button");
-			deleteButton.addEventListener("click", () => {
-				deletePrompt(index);
-			});
-
-			promptDiv.appendChild(input);
-			promptDiv.appendChild(deleteButton);
-			promptsContainer.appendChild(promptDiv);
-		});
 	};
 
 
